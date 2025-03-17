@@ -2,8 +2,6 @@ package com.example.spring.data.jpa.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.cfg.Environment;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +28,6 @@ import java.util.Properties;
 @RequiredArgsConstructor
 public class AppConfig {
 
-//    private final Environment environment;
 
     @Bean
     public DataSource dataSource() {

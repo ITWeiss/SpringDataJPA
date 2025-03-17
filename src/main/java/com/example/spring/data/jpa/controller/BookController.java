@@ -1,6 +1,6 @@
 package com.example.spring.data.jpa.controller;
 
-import com.example.spring.data.jpa.dto.BookDTO;
+import com.example.spring.data.jpa.dto.BookDto;
 import com.example.spring.data.jpa.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class BookController {
 
     @GetMapping("/books")
     public String getAllBooks(Model model) {
-        List<BookDTO> books = bookService.getAllBooks();
+        List<BookDto> books = bookService.getAllBooks();
         model.addAttribute("books", books);
         return "books";
     }
@@ -30,7 +30,7 @@ public class BookController {
     }
 
     @PostMapping("/books/add")
-    public String addBook(@ModelAttribute("book") BookDTO bookDTO) {
+    public String addBook(@ModelAttribute("book") BookDto bookDTO) {
         bookService.saveBook(bookDTO);
         return "redirect:/books";
     }
@@ -43,8 +43,8 @@ public class BookController {
 
     @GetMapping("/books/get/{id}")
     @ResponseBody
-    public BookDTO getBookById(@PathVariable("id") Long id) {
-        Optional<BookDTO> book = bookService.getBookById(id);
+    public BookDto getBookById(@PathVariable("id") Long id) {
+        Optional<BookDto> book = bookService.getBookById(id);
         return book.orElse(null);
     }
 
