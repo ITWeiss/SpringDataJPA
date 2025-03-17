@@ -44,8 +44,8 @@ public class BookController {
     @GetMapping("/books/get/{id}")
     @ResponseBody
     public BookDto getBookById(@PathVariable("id") Long id) {
-        Optional<BookDto> book = bookService.getBookById(id);
-        return book.orElse(null);
+        return bookService.getBookById(id)
+                .orElseThrow(() -> new RuntimeException("Книга с id = %s не найдена".formatted(id)));
     }
 
 
